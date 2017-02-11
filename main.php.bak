@@ -1,0 +1,154 @@
+<?php session_start(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FantasyDB</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/template/1.css" rel="stylesheet" type="text/css" />
+<link href="/fantasydbWEB/template/1.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <?php
+	
+	// If we are logging in
+	if(	empty($_SESSION['userName']))
+	{
+ 		$password = $_POST['password'];
+		$userName = $_POST['userName'];
+	
+		$con = mysql_connect("db550.perfora.net", "dbo199011162", "UMkPUSvq");
+		if(!$con)
+			die(mysql_error());
+		 
+		mysql_select_db("db199011162", $con) ;	
+	
+		if(!empty($userName))
+		{
+			$result = mysql_query("SELECT * FROM users WHERE UserName = '" . $userName . "'", $con) or die(mysql_error()); 	
+			$row = mysql_fetch_array( $result );
+	
+			$userNameNotFound = false;
+			$passwordNotCorrect = false;
+
+			if( !empty($row) )
+			{
+				//User found, check password
+				if($password != $row['UserPassword'])
+			    	$passwordNotCorrect = true;
+			}
+			else
+				$userNameNotFound = true;
+	
+			if(!$userNameNotFound && !$passwordNotCorrect)
+			{
+				// The user was succesffuly authenticated
+				$_SESSION['userName'] = $userName;
+				$_SESSION['teamID'] = $row['TeamID'];
+			}
+		}
+	}
+	else
+	{		
+		//Check to see if user just logged out
+		if(!empty($_POST['logout']))
+		{
+			session_destroy();
+			$userName = "";
+			$teamID = "";
+		}
+		else
+		{
+			$userName = $_SESSION['userName'];
+			$teamID = $_SESSION['teamID'];
+		}
+	}
+?>
+<div id="container">
+	<div id="banner" ><img src="fdb.gif" width="414" height="66">
+ 		<h1 class="TopAndBottomSpacers">
+			<?php
+			if(empty($userName))
+			{
+				echo("<form name=\"loginForm\" method=\"post\" action=\"main.php\">");
+			  	echo("Login: 
+		        	<input name=\"userName\" value=\"Username\" type=\"text\" id=\"userName\"  class=\"loginBoxes\"/>
+		    	<input name=\"password\" type=\"password\" id=\"password\"  class=\"loginBoxes\"/>
+		    	<input type=\"submit\" name=\"submit\" value=\"Log in\" style=\"background-color:#0099CC;color:#FFFFFF;border:none;\" />
+				</form>");
+			}
+			else
+			{
+				echo("<form name=\"loginForm\" method=\"post\" action=\"main.php\">");
+				if($userNameNotFound)
+					$displayLogin = true;
+				if($passwordNotCorrect)
+					$displayLogin = true;
+								
+				if($displayLogin)
+				  	echo("Login: 
+		        	<input name=\"userName\" value=\"Username\" type=\"text\" id=\"userName\"  class=\"loginBoxes\"/>
+			    	<input name=\"password\" type=\"password\" id=\"password\"  class=\"loginBoxes\"/>
+			    	<input type=\"submit\" name=\"submit\" value=\"Log in\" style=\"background-color:#0099CC;color:#FFFFFF;border:none;\" />
+					</form>");					
+				else				
+					echo("<form name=\"logoutForm\" method=\"post\" action=\"main.php\"> 
+					Welcome " . $userName . 
+					"<input type=\"submit\" name=\"logout\" value=\"[ logout ]\" style=\"background-color:#0099CC;color:#FFFFFF;border:none;font-size:8pt;\" />
+					</form>");
+			}
+			?>
+		</h1>
+  </div>
+	<div id="left">
+		<div align="center">
+		  <table width="93%" border="0" cellspacing="10" cellpadding="0">
+            <tr>
+              <td align="center"><a href="Main.php" class="download">Home</a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="Manage.php" class="download">Manage my team </a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="AddMember.php">Browse Competitors</a> </td>
+            </tr>
+            <tr>
+              <td align="center"><a href="ViewTeams.php">Browse user's teams</a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="topTeams.php">Top teams </a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="reportBugs.php">Report bugs </a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="prizes.php">Prizes</a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="http://fantasy-db.com/tinc?key=ahqEJITY&amp;channel=170551">Chat</a></td>
+            </tr>
+            <tr>
+              <td align="center"><a href="register.php">Register</a></td>
+            </tr>
+          </table>
+	  </div>
+	</div>
+  <div id="content">
+  		<?php
+			if($userNameNotFound)
+				echo("<p align=\"right\"><font color=\"red\">Username not found.</font></p>");
+			if($passwordNotCorrect)
+				echo("<p align=\"right\"><font color=\"red\">Password not correct.</font></p>");	
+		?>
+		<h2>Welcome to FantasyDB.</h2>
+		<p>Thank you for choosing FantasyDB as your number one choice for fantasy spl.</p>
+	  <p>Here you can choose a team of five members of the SPL community and compete against others based on how well your team members do at big shows throughout the year. Don't miss your chance to be a part of this one-of-a-kind experience. Please direct all questions to <a class="invert" href="mailto:webmaster@fantasy-db.com">webmaster@fantasy-db.com</a>, or AIM: xi2elic. This site is run by competitors and for competitors. Have fun, and <strong>play nice</strong>! </p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+  </div>
+ 	<div id="footer">
+ 	  <h1 class="TopAndBottomSpacers">copyright scott rehlander technologies all rights reserved 2007 </h1>
+ 	</div>
+</div>
+</body>
+</html>

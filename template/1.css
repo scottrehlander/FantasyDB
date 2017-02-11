@@ -1,0 +1,118 @@
+body {
+background-color: #ffffff;
+font-size: 11px;
+font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+color:#564b47;
+padding:0px;
+margin:0px;
+}
+
+a {color: #ffffff; font-weight:bold;}
+a:visited {color:#ffffff;}
+a:hover {color: #564b47;}
+a:active { color:#000000;}
+
+a.invert {color: #0099CC; font-weight:bold;}
+a.invert:visited {color:#0099CC;}
+a.invert:hover {color: #564b47;}
+a.invert:active { color:#000000;}
+
+a.black {color: #000000; font-weight:normal;}
+a.black:visited {color:#000000;}
+a.black:hover {color:#000000;}
+a.black:active {color:#000000;}
+
+h1 {
+font-size: 11px;
+text-transform:uppercase;
+background-color: #E0A3B7;
+border-top:1px solid #564b47;
+border-bottom:1px solid #564b47;
+padding:0px 0px;
+margin:0px }
+
+h2 {
+font-size:20px;
+font-weight: normal;
+padding: 5px 10px;
+margin:0px;}
+
+img.download {vertical-align:middle;}
+
+/* ----------container zentriert das layout-------------- */
+#container {
+width: 800px;
+margin-bottom: 10px;
+margin-left: auto;
+margin-right: auto;
+background-color: #0099CC;
+}
+
+/* ----------banner for logo-------------- */
+#banner {
+background-color: #ffffff;
+text-align: right;
+padding: 0px;
+margin: 0px;
+}
+#banner img {padding:10px 0px;} 
+
+/* -----------------Inhalt--------------------- */
+#content {
+background-color: #ffffff;
+padding: 0px;
+margin-left: 200px;
+margin-right: 0px;
+}
+div#content { 
+min-height:500px;
+height:expression(this.scrollHeight > 600 ? "auto":"500px"); 
+}
+
+p, pre{
+padding: 5px 10px;
+margin:0px;
+}
+
+/* --------------left navigavtion------------- */
+#left {
+float: left;
+width: 200px;
+margin: 0px;
+padding: 0px;
+}
+
+/* -----------footer--------------------------- */
+#footer {
+clear: both;
+margin: 0px;
+padding: 0px;
+text-align: right; }
+
+/*-----thingies*/
+.TopAndBottomSpacers {
+background-color: #0099CC;
+color: #ffffff;
+}
+
+/*---------Input box size----*/
+.loginBoxes { 
+	font-size: 12px;
+	color:#FFFFFF;
+	background-color:#0099CC; 
+	border-style:double;
+}
+
+.contentTableHeader {
+	background-color:#0099CC;
+	color: #FFFFFF;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.contentTableRow {
+}
+
+.contentTableRowInvert {
+ background-color:#CCCCCC;
+}

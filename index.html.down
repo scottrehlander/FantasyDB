@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Welcome to Fantasy DB at splfantasy.com!</title>
+<style type="text/css">
+<!--
+.style1 {
+	color: #0099CC;
+	font-weight: bold;
+}
+.style2 {color: #000000}
+body {
+	background-color: #0099CC;
+}
+.style4 {
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+a:link {
+	color: #000000;
+}
+a:visited {
+	color: #000000;
+}
+a:hover {
+	color: #333333;
+}
+a:active {
+	color: #000000;
+}
+-->
+</style>
+</head>
+
+<body>
+<div align="center">
+  <p>&nbsp;</p>
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" valign="middle"><table width="60%" height="195" border="2" cellpadding="0" cellspacing="0" bordercolor="#000000">
+        <tr>
+          <td height="193" align="center" bgcolor="#FFFFFF"><p><img src="fdb.gif"></p>
+            <p>&nbsp;</p>
+            Website currently down while we update your scores<span class="style2">! </span></td>
+        </tr>
+      </table>
+        <p><span class="style4">Interested in advertising on this website? Contact: <a href="mailto:advertising@splfantasy.com">advertising@splfantasy.com </a></span></p>
+        </td>
+    </tr>
+  </table>
+  <p><span class="style4">Brought to you by Scott Rehlander Technologies &copy; 2007 all rights reserved </span></p>
+</div>
+</body>
+</html>
